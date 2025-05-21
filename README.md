@@ -20,33 +20,25 @@
 - `notebooks/` — Jupyter ноутбуки с экспериментами.
 - `report/` — отчёт в LaTeX/PDF формате.
 
-## Пример использования
+## Инструкция по запуску и сборке
 
 Установите зависимости:
 ```bash
 pip install -r requirements.txt
 ```
 
-Пример запуска расчётов:
+Для начала скомпилируйте файл с основными методами и функциями:
 ```bash
 python src/graph_knn.py
 ```
 
-Запуск ноутбука с экспериментами:
+Затем запустите ноутбуки с экспериментами:
 ```bash
-jupyter notebook notebooks/knn_example.ipynb
+jupyter notebook notebooks/analyze_berdov.ipynb
+jupyter notebook notebooks/analyze_Вerdov.ipynb
 ```
 
-## Инструкция по запуску и сборке
 
-- Python версии 3.9 и выше.
-- Зависимости устанавливаются из `requirements.txt`.
-- Для запуска экспериментов используйте ноутбуки или скрипты в `src/`.
-
-## Как помочь проекту
-
-Пишите баги и предложения через Issues.  
-Контрибьют приветствуется через Pull Request'ы.
 
 ## Используемые библиотеки
 

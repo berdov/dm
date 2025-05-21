@@ -10,9 +10,14 @@ import pandas as pd
 def sample_exp(n, lam):
     return np.random.exponential(1 / lam, n)
 
-
 def sample_gamma(n, shape, lam):
     return np.random.gamma(shape, 1 / lam, n)
+
+def sample_normal(n, sigma):
+    return np.random.normal(0, sigma, n)
+
+def sample_t(n, df):
+    return np.random.standard_t(df, n)
 
 
 def build_knn_graph(X, k):
