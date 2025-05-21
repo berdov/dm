@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 from scipy.stats import mannwhitneyu, ks_2samp
 from sklearn.metrics import roc_auc_score, roc_curve
 import pandas as pd
+from networkx.algorithms import approximation as approx
 
 
 def sample_exp(n, lam):
@@ -31,6 +32,19 @@ def build_knn_graph(X, k):
             G.add_edge(i, j)
     return G
 
+
+
+def max_degree(G):
+    return max(dict(G.degree()).values())
+
+def min_degree(G):
+    return min(dict(G.degree()).values())
+
+def count_components(G):
+    return nx.number_connected_components(G)
+
+def count_articulation_points(G):
+    return len(list(nx.articulation_points(G)))
 
 def count_triangles(G):
     return sum(nx.triangles(G).values()) // 3
@@ -60,3 +74,19 @@ def build_dist_graph(X, d):
 def chromatic_number(G):
     coloring = nx.coloring.greedy_color(G, strategy='largest_first')
     return max(coloring.values()) + 1
+
+def clique_number(G):
+    return len(max(nx.find_cliques(G), key=len))
+
+def max_independent_set_size(G):
+    indep_set = nx.algorithms.approximation.maximum_independent_set(G)
+    return len(indep_set)
+
+def domination_number(G):
+    dom_set = nx.algorithms.approximation.min_weighted_dominating_set(G)
+    return len(dom_set)
+
+def clique_cover_number(G):
+    complement = nx.complement(G)
+    independent_sets = nx.algorithms.approximation.max_clique.clique_removal(complement)[0]
+    return len(independent_sets)
