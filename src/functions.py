@@ -86,7 +86,34 @@ def domination_number(G):
     dom_set = nx.algorithms.approximation.min_weighted_dominating_set(G)
     return len(dom_set)
 
+from networkx.algorithms.approximation.clique import clique_removal
+
 def clique_cover_number(G):
     complement = nx.complement(G)
-    independent_sets = nx.algorithms.approximation.max_clique.clique_removal(complement)[0]
+    independent_sets, _ = clique_removal(complement)
     return len(independent_sets)
+
+import pandas as pd
+
+def generate_dataset(n, d, dist_H0, args_H0, dist_H1, args_H1, 
+                     feature_funcs, graph_func, n_sim=300):
+    X = []
+    y = []
+
+    for _ in range(n_sim):
+        data = dist_H0(n, *args_H0)
+        G = graph_func(data)
+        features = [f(G) for f in feature_funcs]
+        X.append(features)
+        y.append(0)
+
+    for _ in range(n_sim):
+        data = dist_H1(n, *args_H1)
+        G = graph_func(data)
+        features = [f(G) for f in feature_funcs]
+        X.append(features)
+        y.append(1)
+
+    df = pd.DataFrame(X, columns=[f.__name__ for f in feature_funcs])
+    df["label"] = y
+    return df
