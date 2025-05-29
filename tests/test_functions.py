@@ -12,19 +12,19 @@ from functions import (
 
 def test_sample_normal_shape():
     X = sample_normal(100, 1.0)
-    assert X.shape == (100, 2)
+    assert X.shape == (100,)  # <== было (100, 2)
 
 def test_sample_t_shape():
     X = sample_t(100, 3.0)
-    assert X.shape == (100, 2)
+    assert X.shape == (100,)
 
 def test_sample_exp_shape():
     X = sample_exp(100, 1.0)
-    assert X.shape == (100, 2)
+    assert X.shape == (100,)
 
 def test_sample_gamma_shape():
     X = sample_gamma(100, 0.5, 0.5)
-    assert X.shape == (100, 2)
+    assert X.shape == (100,)
 
 def test_build_knn_graph_runs():
     X = sample_normal(30, 1.0)
