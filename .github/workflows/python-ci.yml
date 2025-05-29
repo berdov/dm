@@ -33,6 +33,5 @@ jobs:
           flake8 . --exit-zero
 
       - name: Run tests
-        run: |  
-          pytest
-          pytest
+        run: |
+          PYTHONPATH=src pytest
