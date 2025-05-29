@@ -18,7 +18,7 @@
 
 - `src/` — исходный код.
 - `notebooks/` — Jupyter ноутбуки с экспериментами.
-- `report/` — отчёт в LaTeX/PDF формате.
+- `report/` — отчёт в MD формате.
 
 ## Инструкция по запуску и сборке
 
@@ -32,7 +32,7 @@ pip install -r requirements.txt
 python src/graph_knn.py
 ```
 
-Затем запустите ноутбуки с экспериментами:
+Затем запустите ноутбуки с экспериментами или построением моделей, например:
 ```bash
 jupyter notebook notebooks/analyze_berdov.ipynb
 jupyter notebook notebooks/analyze_Вerdov.ipynb
